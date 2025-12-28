@@ -126,23 +126,41 @@
   }
 
   .wbh-card-title {
-    font-size: 1.8rem;
-    margin: 0 0 1rem;
+    font-size: 2rem;
+    margin-top: 2.5rem; /* Space for the absolute badge */
+    margin-bottom: 1rem;
     font-family: var(--font-heading-family);
     min-height: 2.4em; /* Match alignment */
   }
 
   .wbh-card-image-wrapper {
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     position: relative;
     aspect-ratio: 1; /* Square for product image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .wbh-card-image-wrapper img {
+  .wbh-card-main-image {
+    position: relative;
+    z-index: 2;
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  .wbh-card-bg-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    z-index: 1;
+    opacity: 0.8;
   }
 
   .wbh-card-btn {
@@ -216,12 +234,28 @@
           </h3>
 
           <div class="wbh-card-image-wrapper">
+            {%- if block.settings.background_image != blank -%}
+              {{
+                block.settings.background_image
+                | image_url: width: 600
+                | image_tag: class: 'wbh-card-bg-image', loading: 'lazy', aria_hidden: true
+              }}
+            {%- endif -%}
+
             {%- if block.settings.custom_image != blank -%}
-              {{ block.settings.custom_image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+              {{
+                block.settings.custom_image
+                | image_url: width: 600
+                | image_tag: class: 'wbh-card-main-image', loading: 'lazy'
+              }}
             {%- elsif block.settings.product.featured_image != blank -%}
-              {{ block.settings.product.featured_image | image_url: width: 600 | image_tag: loading: 'lazy' }}
+              {{
+                block.settings.product.featured_image
+                | image_url: width: 600
+                | image_tag: class: 'wbh-card-main-image', loading: 'lazy'
+              }}
             {%- else -%}
-              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg wbh-card-main-image' }}
             {%- endif -%}
           </div>
 
@@ -337,12 +371,19 @@
         {
           "type": "text",
           "id": "title_override",
-          "label": "Title Override"
+          "label": "Custom Product Title",
+          "info": "Leave blank to use the product's default title."
         },
         {
           "type": "image_picker",
           "id": "custom_image",
-          "label": "Custom Image"
+          "label": "Custom Product Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Illustration",
+          "info": "Upload an image of ingredients or patterns to hover behind the product."
         },
         {
           "type": "text",
