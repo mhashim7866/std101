@@ -100,14 +100,21 @@
   .wbh-card {
     background-color: {{ section.settings.card_background }};
     border-radius: 16px;
-    padding: 2.5rem 2rem;
+    padding: 2rem 2rem 3rem; /* Adjusted padding bottom */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     position: relative;
-    color: #1A301D; /* Card text always dark usually */
+    color: #ffffff;
     height: 100%;
+  }
+
+  @media screen and (min-width: 990px) {
+    .wbh-card {
+      width: 348px;
+      height: 503px;
+    }
   }
 
   .wbh-badge {
@@ -126,21 +133,24 @@
   }
 
   .wbh-card-title {
-    font-size: 2rem;
-    margin-top: 2.5rem; /* Space for the absolute badge */
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin-top: 5rem;
+    margin-bottom: 0rem;
     font-family: var(--font-heading-family);
-    min-height: 2.4em; /* Match alignment */
+    min-height: 1.2em;
+    color: #ffffff;
+    line-height: 1.2;
   }
 
   .wbh-card-image-wrapper {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: -1rem;
     position: relative;
     aspect-ratio: 1; /* Square for product image */
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-grow: 1; /* Allow image area to take up available space */
   }
 
   .wbh-card-main-image {
@@ -169,11 +179,12 @@
     text-decoration: none;
     padding: 1rem 2.5rem;
     border-radius: 50px;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     font-weight: 500;
     margin-bottom: 1rem;
     transition: opacity 0.2s;
     width: auto;
+    min-width: 160px; /* Ensure wide button */
     display: inline-block;
   }
 
@@ -183,8 +194,10 @@
   }
 
   .wbh-price {
-    font-size: 1.2rem;
-    opacity: 0.8;
+    font-size: 1.4rem;
+    opacity: 0.7;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
   }
 {%- endstyle -%}
 

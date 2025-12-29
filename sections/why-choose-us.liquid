@@ -1,0 +1,500 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .wcu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Top Banner */
+  .wcu-banner {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 380px;
+    display: flex;
+    align-items: flex-start;
+    padding: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .wcu-banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .wcu-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+  }
+
+  .wcu-banner-heading {
+    color: #fff;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+    font-family: var(--font-heading-family);
+  }
+
+  /* Glass Features Row */
+  .wcu-features-wrapper {
+    margin-top: -100px; /* Overlap */
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 3;
+    padding: 0 2rem;
+  }
+
+  .wcu-features-row {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
+    padding: 2.5rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-start;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  .wcu-feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    width: 90px;
+  }
+
+  .wcu-feature-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+    object-fit: contain;
+  }
+
+  .wcu-feature-text {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  /* Bottom Grid */
+  .wcu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media screen and (min-width: 990px) {
+    .wcu-grid {
+      grid-template-columns: 350px 1fr;
+    }
+  }
+
+  /* Product Card (Left) */
+  .wcu-product-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 450px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wcu-product-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .wcu-product-img {
+    position: relative;
+    z-index: 2;
+    width: 60%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+  }
+
+  /* Text Info Card (Right) */
+  .wcu-info-card {
+    background-color: #CAD5C7;
+    border-radius: 20px;
+    padding: 4rem;
+    color: #2D4635;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 450px;
+  }
+
+  .wcu-info-content {
+    position: relative;
+    z-index: 2;
+    max-width: 65%;
+  }
+
+  .wcu-info-heading {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #2D4635;
+    font-family: var(--font-heading-family);
+  }
+
+  .wcu-benefit-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .wcu-benefit-item strong {
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .wcu-benefit-item p {
+    font-size: 1.1rem;
+    margin: 0;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  .wcu-capsule-img {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 80%;
+    width: auto;
+    object-fit: contain;
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 750px) {
+    .wcu-info-content {
+      max-width: 100%;
+    }
+    .wcu-capsule-img {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      height: 200px;
+      margin-top: 2rem;
+    }
+    .wcu-banner {
+      height: 300px;
+      padding: 2rem;
+    }
+    .wcu-features-wrapper {
+        margin-top: -60px;
+        padding: 0 1rem;
+    }
+    .wcu-features-row {
+      gap: 1rem;
+      justify-content: center;
+    }
+    .wcu-feature-item {
+      width: 70px;
+    }
+    .wcu-banner-heading {
+      font-size: 2.4rem;
+    }
+    .wcu-info-card {
+      padding: 2rem;
+    }
+    .wcu-info-heading {
+      font-size: 2rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="wcu-container">
+    <!-- Top Banner -->
+    <div class="wcu-banner">
+      {%- if section.settings.banner_image != blank -%}
+        {{ section.settings.banner_image | image_url: width: 1400 | image_tag: class: 'wcu-banner-img' }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'wcu-banner-img placeholder-svg' }}
+      {%- endif -%}
+      <div class="wcu-banner-content">
+        <h2 class="wcu-banner-heading">{{ section.settings.heading }}</h2>
+      </div>
+    </div>
+
+    <!-- Features Row -->
+    <div class="wcu-features-wrapper">
+      <div class="wcu-features-row">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'feature' -%}
+            <div class="wcu-feature-item">
+              {%- if block.settings.icon != blank -%}
+                {{ block.settings.icon | image_url: width: 80 | image_tag: class: 'wcu-feature-icon' }}
+              {%- else -%}
+                <!-- Fallback SVG icon -->
+                <svg
+                  class="wcu-feature-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              {%- endif -%}
+              <span class="wcu-feature-text">{{ block.settings.text }}</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- Bottom Grid -->
+    <div class="wcu-grid">
+      <!-- Left: Product Card -->
+      <div class="wcu-product-card">
+        {%- if section.settings.product_bg != blank -%}
+          {{ section.settings.product_bg | image_url: width: 800 | image_tag: class: 'wcu-product-bg' }}
+        {%- else -%}
+          <div class="wcu-product-bg" style="background-color: #3C5A40;"></div>
+        {%- endif -%}
+
+        {%- if section.settings.product_image != blank -%}
+          {{ section.settings.product_image | image_url: width: 600 | image_tag: class: 'wcu-product-img' }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'wcu-product-img placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      <!-- Right: Info Card -->
+      <div class="wcu-info-card" style="background-color: {{ section.settings.card_color }};">
+        <div class="wcu-info-content">
+          <h3 class="wcu-info-heading">{{ section.settings.info_heading }}</h3>
+
+          <div class="wcu-benefit-list">
+            {%- if section.settings.benefit_1_title != blank -%}
+              <div class="wcu-benefit-item">
+                <strong>{{ section.settings.benefit_1_title }}</strong>
+                <p>{{ section.settings.benefit_1_text }}</p>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.benefit_2_title != blank -%}
+              <div class="wcu-benefit-item">
+                <strong>{{ section.settings.benefit_2_title }}</strong>
+                <p>{{ section.settings.benefit_2_text }}</p>
+              </div>
+            {%- endif -%}
+            {%- if section.settings.benefit_3_title != blank -%}
+              <div class="wcu-benefit-item">
+                <strong>{{ section.settings.benefit_3_title }}</strong>
+                <p>{{ section.settings.benefit_3_text }}</p>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- if section.settings.capsule_image != blank -%}
+          {{ section.settings.capsule_image | image_url: width: 600 | image_tag: class: 'wcu-capsule-img' }}
+        {%- else -%}
+          {{ 'product-2' | placeholder_svg_tag: 'wcu-capsule-img placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#F8F8F4"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Top Banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Background"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Banner Heading",
+      "default": "Feel the difference of a truly healthy."
+    },
+    {
+      "type": "header",
+      "content": "Product Left Card"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Bottle Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_bg",
+      "label": "Product Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Info Right Card"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Info Card Background",
+      "default": "#CAD5C7"
+    },
+    {
+      "type": "text",
+      "id": "info_heading",
+      "label": "Info Heading",
+      "default": "Why Choose SugarMD Super Berberine (DHB and Ceylon Cinnamon) 30 Capsules - NEW Formula?"
+    },
+    {
+      "type": "image_picker",
+      "id": "capsule_image",
+      "label": "Capsule/Detail Image"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Benefit 1 Title",
+      "default": "Superior Bioavailability:"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_1_text",
+      "label": "Benefit 1 Text",
+      "default": "Dihydroberberine is absorbed more efficiently, maximizing its glucose support and antioxidant benefits."
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Benefit 2 Title",
+      "default": "Safe, High-Quality Ingredients:"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_2_text",
+      "label": "Benefit 2 Text",
+      "default": "Features pure Ceylon cinnamon, free from harmful coumarin, for reliable daily supplementation."
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Benefit 3 Title",
+      "default": "Comprehensive Support:"
+    },
+    {
+      "type": "textarea",
+      "id": "benefit_3_text",
+      "label": "Benefit 3 Text",
+      "default": "Addresses multiple aspects of metabolic health, including blood sugar balance, weight management, and cellular protection."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "Lab Tested For Purity" } },
+        { "type": "feature", "settings": { "text": "Kosher" } },
+        { "type": "feature", "settings": { "text": "Organic" } },
+        { "type": "feature", "settings": { "text": "All Natural" } },
+        { "type": "feature", "settings": { "text": "No GMO" } },
+        { "type": "feature", "settings": { "text": "Raw" } },
+        { "type": "feature", "settings": { "text": "No Gluten" } },
+        { "type": "feature", "settings": { "text": "Expert Formulated" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

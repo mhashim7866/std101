@@ -94,6 +94,10 @@
         "button_link": ""
       }
     },
+    "why_choose_us": {
+      "type": "why-choose-us",
+      "settings": {}
+    },
     "whole_body_health": {
       "type": "whole-body-health",
       "settings": {}
@@ -102,6 +106,7 @@
   "order": [
     "hero_banner",
     "whole_body_health",
+    "why_choose_us",
     "image_banner",
     "featured_collection",
     "daily_essentials"
