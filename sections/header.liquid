@@ -92,78 +92,11 @@
     }
   }
 
+  @media screen and (min-width: 990px) {
     .header {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-  }
-
-  {%- if section.settings.enable_transparent_header -%}
-    .header-wrapper.header-wrapper--transparent {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: transparent;
-      border-bottom: none;
-      z-index: 10;
-    }
-
-    .header-wrapper--transparent .header__heading-link,
-    .header-wrapper--transparent .list-menu__item,
-    .header-wrapper--transparent .header__icon,
-    .header-wrapper--transparent .header__active-menu-item {
-      color: #fff; /* Assuming white text on transparent header */
-    }
-
-    .header-wrapper--transparent .header__heading-logo {
-      filter: brightness(0) invert(1); /* White logo if it's an image */
-    }
-  {%- endif -%}
-
-  /* Inline Search Styles */
-  .header__search-inline {
-    display: flex;
-    align-items: center;
-    background: #fff; /* White background for search pill */
-    border-radius: 50px;
-    padding: 0.5rem 1.5rem;
-    margin-left: 2rem;
-    min-width: 250px;
-  }
-
-  .header__search-inline .search__input {
-    border: none;
-    box-shadow: none;
-    background: transparent;
-    padding: 0 1rem;
-    font-size: 1.4rem;
-    width: 100%;
-  }
-
-  .header__search-inline .search__input:focus-visible {
-    outline: none;
-    box-shadow: none;
-  }
-
-  .header__search-inline .search__button {
-    background: #000;
-    color: #fff;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: none;
-    cursor: pointer;
-  }
-
-  .header__search-inline .search__button .svg-wrapper {
-     width: 14px;
-     height: 14px;
-     display: block;
   }
 {%- endstyle -%}
 
@@ -189,7 +122,7 @@
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
   {% endif %}
-  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}{% if section.settings.enable_transparent_header %} header-wrapper--transparent{% endif %}"
+  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -314,26 +247,7 @@
           </localization-form>
         {%- endif -%}
       </div>
-      {%- if section.settings.search_style == 'inline' -%}
-        <div class="header__search-inline">
-          <form action="{{ routes.search_url }}" method="get" role="search" class="search">
-            <input
-              class="search__input"
-              type="search"
-              name="q"
-              value="{{ search.terms | escape }}"
-              placeholder="{{ 'general.search.search' | t }}"
-            >
-            <button class="search__button" aria-label="{{ 'general.search.search' | t }}">
-              <span class="svg-wrapper">
-                {{- 'icon-search.svg' | inline_asset_content -}}
-              </span>
-            </button>
-          </form>
-        </div>
-      {%- else -%}
-        {% render 'header-search', input_id: 'Search-In-Modal' %}
-      {%- endif -%}
+      {% render 'header-search', input_id: 'Search-In-Modal' %}
 
       {%- if shop.customer_accounts_enabled -%}
         <a
@@ -699,28 +613,6 @@
     {
       "type": "header",
       "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_transparent_header",
-      "default": false,
-      "label": "Enable Transparent Header"
-    },
-    {
-      "type": "select",
-      "id": "search_style",
-      "options": [
-        {
-          "value": "modal",
-          "label": "Modal"
-        },
-        {
-          "value": "inline",
-          "label": "Inline"
-        }
-      ],
-      "default": "modal",
-      "label": "Search Style"
     },
     {
       "type": "range",
